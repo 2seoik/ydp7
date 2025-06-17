@@ -1,0 +1,5 @@
+# RockyLinux 에서 nvm 설치
+1. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+2. source ~/.bashrc
+3. nvm -v
+4. nvm install {노드 버전}
