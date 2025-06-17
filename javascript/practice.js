@@ -1,4 +1,7 @@
- toFixed() 메서드를 사용하여 1의 소수점 자리에서 반올림하여 문자열로 반환하여 처리함.
+/**
+ * for문을 이용하여 다음과 같이 정확한 숫자를 출력하는 코드를 작성하시오.
+ * 10진법 소수를 2진법으로 완벽하게 변환하지 못하는 컴퓨터의 표현방식때문에 원하는 정확한 출력물을 얻을수 없음.
+ * @returns toFixed() 메서드를 사용하여 1의 소수점 자리에서 반올림하여 문자열로 반환하여 처리함.
  */
 function practice1() {
   for (let i = 0.1; i < 1; i += 0.1) {
@@ -91,13 +94,6 @@ function practice4_addPoints(a, b) {
     return;
 }
 
-practice4_addPoints(0.21354, 0.1)   // 0.31354
-practice4_addPoints(0.14, 0.28)     // 0.42
-practice4_addPoints(0.34, 0.226)    // 0.566
-practice4_addPoints(10.34, 200.226) // 210.566
-practice4_addPoints(0.143, -10.28)  // -10.137
-practice4_addPoints(0.143, -10)  // -9.857
-
 
 /**
  * 다음 소수 배열의 평균을 소수점 2자리까지 구해보세요.
@@ -123,4 +119,18 @@ function practice5(){
     return;
 }
 
-
+practice1()
+console.log('---------------------------')
+practice2()
+console.log('---------------------------')
+practice3()
+practice3_2()
+console.log('---------------------------')
+practice4_addPoints(0.21354, 0.1)
+practice4_addPoints(0.14, 0.28)
+practice4_addPoints(0.34, 0.226)
+practice4_addPoints(10.34, 200.226)
+practice4_addPoints(0.143, -10.28)
+practice4_addPoints(0.143, -10)
+console.log('---------------------------')
+practice5()
