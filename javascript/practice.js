@@ -100,12 +100,12 @@ function practice4_addPoints(a, b) {
  * (단, toFixed를 사용하지 말고, 정상적인 숫자가 아닌 경우는 평균에서 제외하세요!)
  */
 function practice5(){
-    // const prices = [10.34, 19, 'xxx', 5.678, null, '20.9', 1.005, 0, undefined, 0.5];
-    const prices = [10.34232323, 15, 'xxx', 5.67899, null, 20.9, 1.005121, 0, 15.234, undefined, 0.5];
+    const prices = [10.34, 19, 'xxx', 5.678, null, '20.9', 1.005, 0, undefined, 0.5];
+    // const prices = [10.34232323, 15, 'xxx', 5.67899, null, 20.9, 1.005121, 0, 15.234, undefined, 0.5];
 
     // 정상적인 숫자찾기
     const checkPrices = prices.filter(price => {
-        return price !== null && isFinite(price);
+        return price !== null && !isNaN(price);
     })
 
     // 평균을 위한 더하기
@@ -119,18 +119,18 @@ function practice5(){
     return;
 }
 
-practice1()
-console.log('---------------------------')
-practice2()
-console.log('---------------------------')
-practice3()
-practice3_2()
-console.log('---------------------------')
-practice4_addPoints(0.21354, 0.1)
-practice4_addPoints(0.14, 0.28)
-practice4_addPoints(0.34, 0.226)
-practice4_addPoints(10.34, 200.226)
-practice4_addPoints(0.143, -10.28)
-practice4_addPoints(0.143, -10)
-console.log('---------------------------')
+// practice1()
+// console.log('---------------------------')
+// practice2()
+// console.log('---------------------------')
+// practice3()
+// practice3_2()
+// console.log('---------------------------')
+// practice4_addPoints(0.21354, 0.1)
+// practice4_addPoints(0.14, 0.28)
+// practice4_addPoints(0.34, 0.226)
+// practice4_addPoints(10.34, 200.226)
+// practice4_addPoints(0.143, -10.28)
+// practice4_addPoints(0.143, -10)
+// console.log('---------------------------')
 practice5()
