@@ -1,4 +1,4 @@
-const ROOP_NO = 100000;
+const ROOP_NO = 10000;
 
 function neverOverflowSummary() {
   let current = 0; // 현재 n 값을 저장
@@ -7,8 +7,8 @@ function neverOverflowSummary() {
   return function summary(n) {
     try {
       if (current === 1) {
-        // console.log("acc", acc);
-        return acc;
+        console.log("acc", acc);
+        return 1;
       }
 
       current = n;
@@ -16,13 +16,11 @@ function neverOverflowSummary() {
 
       return current + summary(current - 1);
     } catch (e) {
-      // console.log(`${e.message} ===============>  n:${n}, current:${current}`);
+      // console.log(`${e.message} ===============> c:${current}`);
       return current + summary(current - 1);
     }
   };
 }
 
 const over = neverOverflowSummary();
-console.log(over(ROOP_NO));
-
-// console.log(neverOverflowSummary(ROOP_NO));
+over(ROOP_NO)

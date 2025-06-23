@@ -7,6 +7,7 @@ function neverOverflowSummary(n) {
   function summary(n) {
     try {
       if (n === 0) {
+        console.log(acc)
         return 1;
       }
 

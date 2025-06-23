@@ -6,7 +6,8 @@ let current = 0; // 현재 n 값을 저장
 function neverOverflowSummary(n) {
   try {
     if (n === 1) {
-      return acc;
+      console.log({'acc' : acc})
+      return 1;
     }
 
     acc += n;
@@ -15,8 +16,7 @@ function neverOverflowSummary(n) {
     return n + neverOverflowSummary(current - 1);
   } catch (e) {
     // Stack Overflow 발생
-    // console.log(e);
-    // console.log("error overflow 현재, 누적 합", current, acc);
+    console.log("error overflow 현재, 누적 합", current, acc);
     return n + neverOverflowSummary(current - 1);
   }
 }
