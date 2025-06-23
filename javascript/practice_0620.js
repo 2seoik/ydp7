@@ -152,7 +152,7 @@ function loopFibonacci(value) {
   for (let index = 3; index <= value; index++) {
     let next = prev + current;
 
-    prev = current;
+    prev = current; 
     current = next;
     // [prev, current] = [current, next]
   }
