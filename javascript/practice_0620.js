@@ -127,7 +127,10 @@ function makeReverseArray(value){
 }
 
 // console.log(makeReverseArray(5));
-
+function factorialTCO(n, acc = []) {
+  if (n === 1) return [1, ...acc] ;
+  return factorialTCO(n-1, [n, ...acc]);
+}
 
 
 // =============================================================================
