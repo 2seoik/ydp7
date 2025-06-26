@@ -6,7 +6,7 @@ const deleteArray = (...args) => {
     const [a, ...b] = [...args];
 
     const del = a.slice(b, Infinity);
-    const [c] = [del]
+    const [z, ...del] = a
     console.log(n)
     // console.log("🚀 ~ deleteArray ~ a:", a)
     // console.log("🚀 ~ deleteArray ~ b:", b)
