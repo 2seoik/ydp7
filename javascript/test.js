@@ -1,3 +1,45 @@
+function flattenArray(arr) {
+  let result = [];
+  arr.forEach((item) => {
+    if (Array.isArray(item)) {
+      result.concat(flattenArray(item));
+      // result = result.concat(flattenArray(item));
+      // result = [...result, ...item]
+    } else {
+      result.push(item);
+    }
+  });
+  return result;
+}
+
+console.log(flattenArray([1, [2, [3, [4]]]]));
+
+return
+
+const range = {
+  form: 1,
+  to: 5
+}
+
+range[Symbol.iterator] = function () {
+
+  return {
+    current: this.form,
+    end: this.to,
+    next() {
+      if (this.current <= this.end) {
+        return { value: this.current++, done: false }
+      } else {
+        return { done: true }
+      }
+    }
+  }
+}
+
+for (let num of range) {
+  console.log(num)
+}
+
 const dog = {
   name: 'Maxx',
   showMyName() {
@@ -12,7 +54,6 @@ dog.whatsYourName();
 
 Array.prototype.map
 
-return 
 
 // const array = [100, 200, 300, 400, 500, 600, 700];
 
@@ -53,11 +94,11 @@ return
 
 
 
-return 
+return
 
 
 function loopFibonacci(value) {
-  if(value <= 2) return 1;
+  if (value <= 2) return 1;
 
   let prev = 1;
   let current = 1;
@@ -74,56 +115,56 @@ function loopFibonacci(value) {
 }
 
 function recurFibonacci(value) {
-  if(value <= 2) return 1;
+  if (value <= 2) return 1;
   return recurFibonacci(value - 2) + recurFibonacci(value - 1);
 }
 
 const memoFibonacci = memoized(function (value) {
-  if(value <= 2) return 1;
+  if (value <= 2) return 1;
   return recurFibonacci(value - 2) + recurFibonacci(value - 1);
 });
 
-function memoized(fnc){
+function memoized(fnc) {
   const cache = {};
-  return (key) => cache[key] || (cache[key] = fnc(key));  
+  return (key) => cache[key] || (cache[key] = fnc(key));
 }
 
 console.log(loopFibonacci(5))
 console.log(recurFibonacci(5))
 console.log(memoFibonacci(5))
 
-return 
+return
 
 
 
-function swapArray(){
+function swapArray() {
   const arr = [1, 2];
   let [a, b] = arr;
-  [a, b] = [b, a]; 
+  [a, b] = [b, a];
 
-  console.log("🚀 ~ swapArray ~ arr:", arr)  
+  console.log("🚀 ~ swapArray ~ arr:", arr)
 }
 swapArray();
 
 
-return 
+return
 const arr = [1, 2, 3, 4, 5];
-const [a1, a2, ...rest] = arr; 
+const [a1, a2, ...rest] = arr;
 console.log("🚀 ~ a1, a2, ...rest:", a1, a2, rest)
 
-return 
+return
 
 
 /**
  * 다음과 같이 key를 전달하면 해당 값의 첫 글자를 제외한 문자를 
  * 리턴하는 함수를 destructing을 최대한 활용하여 (가),(나),(다) 부분을 작성하시오.
  */
-function getValueExceptInitial(key){
-  const user = {name: 'Hong', passwd: 'xyz', addr: 'Seoul'};
-  
-  const {[key]:target} = user;
+function getValueExceptInitial(key) {
+  const user = { name: 'Hong', passwd: 'xyz', addr: 'Seoul' };
+
+  const { [key]: target } = user;
   const [, ...words] = target;
-  
+
   return words.join('')
 }
 
