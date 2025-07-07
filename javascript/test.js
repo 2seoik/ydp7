@@ -1,3 +1,48 @@
+class GreeTings {
+  constructor() {
+    console.log('greetings....')
+  }
+
+  hello(name) {
+    console.log(name)
+  }
+}
+
+const john = new GreeTings()
+const adam = new GreeTings()
+
+john.hello('john')
+adam.hello('adam')
+return
+
+const user = {
+  id: 1,
+  name: 'Hong',
+  hello: function () {
+    console.log(`안녕하세요 ${this.name}`)
+  },
+  bye() {
+    console.log(`잘가세요 ${this.name}`)
+  }
+}
+
+user.bye()
+
+
+return
+const w = Array.from({ length: 5 }, (_, v) => v + 1);
+
+const test = (() => {
+  let idx = 1;
+
+  return () => w[idx]
+})();
+
+console.log(test())
+
+
+return
+
 function flattenArray(arr) {
   let result = [];
   arr.forEach((item) => {
