@@ -18,21 +18,41 @@ const loopFibonacci = (count) => {
     let curr = 1;
 
     while (true) {
-        if (next === 1) break;
+        if (count === 1) break;
         [prev, curr] = [curr, prev + curr];
+        count--;
     }
 
     return curr;
+}
+
+
+const recurFibonacci = (count, prev = 0, curr = 1) => {
+    if (count === 1) {
+        return curr;
+    } else {
+        [prev, curr] = [curr, prev + curr];
+    }
+
+    return recurFibonacci(count - 1, prev, curr);
+}
+
+const memoized = () => {
+
+}
+
+const memoFibonacci = () => {
+
 }
 
 assert.equal(loopFibonacci(5), 5);
 assert.equal(loopFibonacci(7), 13);
 assert.equal(loopFibonacci(30), 832040);
 
-return
 assert.equal(recurFibonacci(5), 5);
 assert.equal(recurFibonacci(7), 13);
 assert.equal(recurFibonacci(30), 832040);
+return
 
 assert.equal(memoFibonacci(5), 5);
 assert.equal(memoFibonacci(7), 13);
