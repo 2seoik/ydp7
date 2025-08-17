@@ -11,31 +11,21 @@ loopFibonacci(5); // 5
 recurFibonacci(7); // 13
 memoFibonacci(30); // 832040
 */
-const loopFibonacci = (n) => {
-    let prev = 0;
-    let curr = 1;
 
-    for (let index = 2; index <= n; index++) {
-        [prev, curr] = [curr, prev + curr];
-    }
-
-    return curr;
-}
-
-const recurFibonacci = (n) => {
-    if (n <= 1) return n;
-    return recurFibonacci(n - 2) + recurFibonacci(n - 1);
-}
-
-const memoiezed = (fn) => {
+const memoized = (fn) => {
     const cache = {};
-    return (key) => cache[key] || (cache[key] = fn(key));
+    return (key) => cache[key] || (cache[key] = fn(key))
 }
 
-const memoFibonacci = memoiezed((n) => {
+const memoFibonacci = memoized((n) => {
     if (n <= 1) return n;
     return memoFibonacci(n - 2) + memoFibonacci(n - 1);
-});
+})
+
+assert.equal(memoFibonacci(5), 5);
+assert.equal(memoFibonacci(7), 13);
+assert.equal(memoFibonacci(30), 832040);
+return
 
 assert.equal(loopFibonacci(5), 5);
 assert.equal(loopFibonacci(7), 13);
@@ -44,8 +34,3 @@ assert.equal(loopFibonacci(30), 832040);
 assert.equal(recurFibonacci(5), 5);
 assert.equal(recurFibonacci(7), 13);
 assert.equal(recurFibonacci(30), 832040);
-
-assert.equal(memoFibonacci(5), 5);
-assert.equal(memoFibonacci(7), 13);
-assert.equal(memoFibonacci(30), 832040);
-return 

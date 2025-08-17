@@ -1,9 +1,16 @@
-const hongx = { id: 1, name: "Hong", dept: "Server" };
-const kimx = { id: 2, name: "Kim", dept: "Server" };
-const leex = { id: 3, name: "Lee", dept: "Client" };
-const users = [hongx, leex, kimx];
-
 type PropType = string | number | symbol;
+
+type User = {
+  id: number;
+  name: string;
+  dept: "Server" | "Client";
+};
+
+const hong: User = { id: 1, name: "Hong", dept: "Server" };
+const kim: User = { id: 2, name: "Kim", dept: "Server" };
+const lee: User = { id: 3, name: "Lee", dept: "Client" };
+const users = [kim, hong, lee];
+
 declare global {
   interface Array<T> {
     firstObject: T;
@@ -27,11 +34,24 @@ declare global {
   }
 }
 
-Array.prototype.mapBy = function (prop) {
+Array.prototype.mapBy = function <T, P extends keyof T>(
+  this: T[],
+  prop: P
+): T[P][] {
   return this.map((a) => a[prop]);
 };
 
+// console.log(users.mapBy("id2"));
+
+type HasIncludes<T> = {
+  includes(searchElement: T, fromIndex?: number): boolean;
+};
+
+const hasIncludes = <T>(p: any, v: T): p is HasIncludes<T> =>
+  Array.isArray(p) || (typeof p === "string" && typeof v === "string");
+
 Array.prototype.filterBy = function <T, P extends keyof T>(
+  this: T[],
   prop: P,
   value: T[P],
   isIncludes = false
@@ -43,12 +63,7 @@ Array.prototype.filterBy = function <T, P extends keyof T>(
   );
 };
 
-type HasIncludes<T> = {
-  includes(searchElement: T, fromIndex?: number): boolean;
-};
-
-const hasIncludes = <T>(p: any, v: T): p is HasIncludes<T> =>
-  Array.isArray(p) || (typeof p === "string" && typeof v === "string");
+// console.log(users.filterBy("id", 1));
 
 Array.prototype.rejectBy = function <T, P extends keyof T>(
   this: T[],
@@ -63,21 +78,29 @@ Array.prototype.rejectBy = function <T, P extends keyof T>(
   );
 };
 
-Array.prototype.findBy = function (prop, value) {
+// console.log(users.rejectBy("id", 1));
+
+Array.prototype.findBy = function <T, P extends keyof T>(
+  this: T[],
+  prop: P,
+  value: T[P]
+) {
   return this.find((a) => a[prop] === value);
 };
+
+// console.log(users.findBy("id", 2));
 
 Array.prototype.sortBy = function <
   T,
   P extends keyof T | `${keyof T & string}:${"asc" | "desc"}`
 >(prop: P) {
-  const [key, direction = "asc"] = String(prop).split(":") as [
-    keyof T,
-    "desc" | "asc"
-  ];
+  const [key, direction = "asc"] = String(prop).split(":") as [keyof T, "desc"];
   const dir = direction.toLowerCase() === "desc" ? -1 : 1;
-  return this.sort((a, b) => (a[key] > b[key] ? dir : -dir));
+  return this.sort((a: T, b: T) => (a[key] > b[key] ? dir : -dir));
 };
+
+// console.log(users);
+// console.log(users.sortBy("id"));
 
 Array.prototype.groupBy = function <T, GF extends (a: T) => PropType>(gfn: GF) {
   const ret: Record<PropType, T[]> = {};
@@ -89,11 +112,15 @@ Array.prototype.groupBy = function <T, GF extends (a: T) => PropType>(gfn: GF) {
 
   return ret;
 };
+
+// console.log(users.groupBy(({ dept }) => dept));
+// console.log(users.groupBy(({ dept2 }) => dept));
+
 /*
 Server: [
   { id: 1, name: 'Hong', dept: 'Server' },
   { id: 2, name: 'Kim', dept: 'Server' },
-],
+],`
 Client: [
   { id: 3, name: 'Lee', dept: 'Client' }
 ],
@@ -117,5 +144,8 @@ Object.defineProperties(Array.prototype, {
     },
   },
 });
+
+// console.log(users.firstObject);
+// console.log(users.lastObject);
 
 export {};

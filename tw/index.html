@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TW</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+
+  <body class="grid place-items-center">
+    <div
+      class="container h-screen border flex flex-col border-amber-300 mx-auto"
+    >
+      <header class="w-full">
+        <nav class="flex justify-between border-b-2 border-green-500 w-full">
+          <h1 class="text-3xl font-bold text-green-500 tracking-tighter">
+            SeSAC
+          </h1>
+          <div class="flex items-center">
+            <a href="/" class="mr-3">hong</a>
+            <div
+              class="border p-2 rounded-full hover:ring-sky-300 hover:bg-amber-500 cursor-pointer active:scale-75 transition-all duration-[100] ease-in-out"
+            >
+              <img src="vite.svg" alt="profile image" class="w-6 rotate-45" />
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main class="flex-1 border-2 border-red-900">
+        <h1 class="text-3xl font-bold underline text-center">Hello world!</h1>
+        <div
+          class="group border mt-5 w-lg xmd:w[500px] mx-auto rounded-lg shadow-md p-3 flex"
+        >
+          <div class="btn-icon">
+            <img
+              src="vite.svg"
+              alt="vite"
+              class="w-24 mr-3 group-hover:w-40 transition"
+            />
+          </div>
+          <div class="overflow-hidden truncate">
+            <strong class="font-semibold block">홍길도옹</strong>
+            <span class="text-sm"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+              voluptatem placeat consequuntur adipisci ex maiores dolore
+              reprehenderit magnam nesciunt debitis?</span
+            >
+            <div class="border text-right hidden group-hover:block">
+              <button class="float-right">BTN</button>
+              <button
+                class="[&>svg]:fill-amber-300 [&>svg]:stroke-blue-500 btn-icon"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-user-plus-icon lucide-user-plus"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <line x1="19" x2="19" y1="8" y2="14" />
+                  <line x1="22" x2="16" y1="11" y2="11" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <form>
+          <input type="text" placeholder="test@test.co.kr" />
+          <input type="text" value="ddd" />
+        </form>
+        <div
+          class="mx-auto border w-72 h-72 [&>div]:bg-amber-500 [&>div]:w-12 [&>div]:text-center [&>div]:hover:bg-amber-200 flex flex-col items-center justify-center space-x-1"
+        >
+          <div class="border self-start basis-10">1</div>
+          <div class="border flex-2/1x basis-24">2</div>
+          <div class="border self-end flex-1/4x">3</div>
+        </div>
+      </main>
+      <footer class="text-center">&#169; SeSAC 2025</footer>
+    </div>
+  </body>
+</html>

@@ -3,15 +3,14 @@ const assert = require("assert")
 Array.prototype.reduce 함수를 직접 구현하시오.
 */
 
+
+
 const kim = { id: 2, name: 'kim' };
 const lee = { id: 3, name: 'Lee' };
 const park = { id: 4, name: 'Park' };
 const users = [kim, lee, park];
 
 const a10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-//함수
-
 
 console.log(reduce([1, 2, 3], (a, b) => a + b, 0));       // 6이면 통과!
 console.log(reduce([1, 2, 3, 4, 5], (a, b) => a + b));    // 15면 통과!
